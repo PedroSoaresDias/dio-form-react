@@ -2,7 +2,7 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     devtool: "source-map",
-    entry: "./src/index.js",
+    entry: "./src/index.tsx",
     module: {
         rules: [
             {
@@ -19,13 +19,18 @@ module.exports = {
                 use: ["style-loader", "css-loader"]
             },
             {
+                test: /\.(ts|tsx)$/,
+                exclude: /node_modules/,
+                use: { loader: "ts-loader" }
+            },
+            {
                 test: /\.(png|jpe?g|gif|webp|svg)$/i,
                 use: ["file-loader"]
             },
         ]
     },
     resolve: {
-        extensions: [".js", ".jsx"],
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
     },
     plugins: [
         new HtmlWebPackPlugin({

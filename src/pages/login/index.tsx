@@ -1,4 +1,3 @@
-import React from 'react'
 import Header from '../../components/Header';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
@@ -12,6 +11,7 @@ import { api } from "../../services/api";
 import { MdEmail, MdLock } from "react-icons/md";
 
 import { Container, Title, Wrapper, Row, Column, EsqueciText, CriarText, SubtitleLogin, TitleLogin } from './styles';
+import { IFormData } from './types';
 
 const schema = yup.object({
   email: yup.string().email("email não é valido").required("Campo obrigatório"),
@@ -21,12 +21,12 @@ const schema = yup.object({
 export default function Login() {
   const navigate = useNavigate();
 
-  const { control, handleSubmit, formState: { errors } } = useForm({
+  const { control, handleSubmit, formState: { errors } } = useForm<IFormData>({
     resolver: yupResolver(schema),
     mode: "onChange",
   });
 
-  const onSubmit = async formData => {
+  const onSubmit = async (formData: IFormData) => {
     try {
       const { data } = await api.get(`users?email=${formData.email}&senha=${formData.password}`);
 

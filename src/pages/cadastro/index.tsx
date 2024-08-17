@@ -1,4 +1,3 @@
-import React from 'react';
 import Header from '../../components/Header';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
@@ -9,7 +8,7 @@ import * as yup from "yup";
 
 import { MdPerson, MdEmail, MdLock } from "react-icons/md";
 
-import { Container, Wrapper, LoginText, InfoText, Row, Column, Title, TitleCadastro, SubtitleCadastro } from "./styles";
+import { Container, Wrapper, LoginText, InfoText, Column, Title, TitleCadastro, SubtitleCadastro } from "./styles";
 
 const schema = yup.object({
   fullName: yup.string().min(3, "Nome completo no mínimo 3 caracteres").required("Campo obrigatório"),

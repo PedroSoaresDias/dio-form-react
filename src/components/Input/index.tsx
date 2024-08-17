@@ -3,8 +3,9 @@ import React from 'react';
 import { Controller } from 'react-hook-form';
 
 import { InputContainer, ErrorText, InputText, IconContainer } from "./styles";
+import { IInput } from './types';
 
-export default function Input({ leftIcon, name, control, errorMessage, ...rest }) {
+export default function Input({ leftIcon, name, control, errorMessage, ...rest }: IInput) {
   return (
     <>
       <InputContainer>
